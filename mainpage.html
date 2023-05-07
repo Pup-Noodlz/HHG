@@ -12,8 +12,15 @@
             p {
                 margin-top: 7px;
                 font-size: 25px;
+                font-weight: bold;
                 color: #f5efef;
-            }
+                text-shadow:
+                    -1px -1px 0 black,
+                    1px -1px 0 black,
+                    -1px 1px 0 black,
+                    1px 1px 0 black;
+                }
+
 
             button {
                 background-color: transparent;
@@ -44,6 +51,12 @@
                 margin-bottom: 25px;
                 font-size: 24px;
                 color: #f5efef;
+                font-weight: bold;
+                text-shadow:
+                    -1px -1px 0 black,
+                    1px -1px 0 black,
+                    -1px 1px 0 black,
+                    1px 1px 0 black;
                 display: block;
             }
             
@@ -52,7 +65,7 @@
 <body>
 	<h1><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/header.png" alt="HHG Handy Hacking Guide"></h1>
 	<p>Choose your move:</p>
-	<button id="Pen Testing"><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/Pen.png" alt="Pen Testing"></button>
+	<button id="Spoofing"><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/spoofing.png" alt="Spoofing"></button>
 	<button id="Back Door"><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/backdoor.png" alt="Back Door"></button>
 	<button id="Malware"><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/malware.png" alt="Malware"></button>
     <button id="Phishing"><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/phishing.png" alt="Phishing"></button>
@@ -60,15 +73,15 @@
 	<p id="result"></p>
     <h2><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/HHG2.png"alt="HHG Possibilities"></h2>
     <script>
-        var choices = ["Pen Testing", "Back Door", "Malware", "Phishing", "DDoS"];
+        var choices = ["Spoofing", "Back Door", "Malware", "Phishing", "DDoS"];
         var playerChoice;
         var computerChoice;
         var winningCombinations = {
-        "Pen Testing": ["Back Door", "Phishing"],
+        "Spoofing": ["Back Door", "Phishing"],
         "Back Door": ["Malware", "DDoS"],
-        "Malware": ["Pen Testing", "Phishing"],
+        "Malware": ["Spoofing", "Phishing"],
         "Phishing": ["Back Door", "DDoS"],
-        "DDoS": ["Malware", "Pen Testing"]
+        "DDoS": ["Malware", "Spoofing"]
         };
 
         function checkWinningCombination(playerChoice, computerChoice) {
@@ -94,7 +107,7 @@
             document.getElementById("result").innerHTML = "You chose " + playerChoice + ", the opponent chose " + computerChoice + ". " + result;
             }
     
-        document.getElementById("Pen Testing").addEventListener("click", getPlayerChoice);
+        document.getElementById("Spoofing").addEventListener("click", getPlayerChoice);
         document.getElementById("Back Door").addEventListener("click", getPlayerChoice);
         document.getElementById("Malware").addEventListener("click", getPlayerChoice);
         document.getElementById("Phishing").addEventListener("click", getPlayerChoice);
