@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <title>Guess the Word</title>
+    <style>
+        body {
+            background-color: #3d3d3d;
+            font-family: 'Aldrich';
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 30px;
+            letter-spacing: 10px;
+            text-shadow: 2px 2px #c7c7c7;
+        }
+
+        p {
+            margin-top: 7px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #f5efef;
+            text-shadow:
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
+        }
+
+        label {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            border: none;
+            background-color: #3d3d3d;
+            color: #f5f5f5;
+            font-size: 20px;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px #c7c7c7;
+            text-shadow: 1px 1px #c7c7c7;
+            width: 200px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        button {
+            background-color: #c7c7c7;
+            color: #2f2f2f;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px #3d3d3d;
+            text-shadow: 1px 1px #3d3d3d;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #3d3d3d;
+            color: #c7c7c7;
+        }
+
+        #result {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f5efef;
+            text-shadow:
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <label>Enter the word:</label>
+    <input type="text" id="word-input">
+    <br><br>
+    <button onclick="encodeWord()">Encode Word</button>
+    <br><br>
+    <label>Encoded Word:</label>
+    <input type="text" id="encoded-word" disabled>
+    <br><br>
+    <label>Guess the Word:</label>
+    <input type="text" id="guess-input">
+    <button onclick="checkGuess()">Check Guess</button>
+    <br><br>
+    <p>Time Remaining: <span id="timer">30</span> seconds</p>
+
+    <script>
+          var timer;
+    var timeLeft = 30; // Set the timer to 30 seconds
+
+    function startTimer() {
+        timer = setInterval(countdown, 1000); // Start the timer and set it to call the countdown() function every second
+    }
+
+    function stopTimer() {
+        clearInterval(timer); // Stop the timer
+    }
+
+    function resetTimer() {
+        stopTimer();
+        timeLeft = 30; // Reset the timer to 30 seconds
+        updateTimerDisplay(); // Update the timer display
+    }
+
+    function countdown() {
+        timeLeft--;
+        if (timeLeft === 0) {
+            stopTimer();
+            document.getElementById("result").innerHTML = "Time's up! You lose!";
+            return;
+        }
+        updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+    document.getElementById("timer").innerHTML = timeLeft + " seconds left"; // Display the time left in the "timer" element
+}
+
+    function encodeWord() {
+        resetTimer(); // Reset the timer when a new word is entered
+        startTimer(); // Start the timer
+        var word = document.getElementById("word-input").value.toUpperCase();
+        var encodedWord = "";
+        for (var i = 0; i < word.length; i++) {
+            var letterCode = word.charCodeAt(i) - 64; // Convert letter to number code (A=1, B=2, etc.)
+            encodedWord += letterCode + " "; // Add a space between each letter code
+        }
+        document.getElementById("word-input").value = ""; // Clear the input field
+        document.getElementById("encoded-word").value = encodedWord.trim(); // Display the encoded word in the second input field
+    }
+
+    function checkGuess() {
+    var guess = document.getElementById("guess-input").value.toUpperCase();
+    var encodedWord = document.getElementById("encoded-word").value;
+    var decodedWord = "";
+    var letterCodes = encodedWord.split(" ");
+    for (var i = 0; i < letterCodes.length; i++) {
+        var letterCode = parseInt(letterCodes[i]);
+        var letter = String.fromCharCode(letterCode + 64); // Convert number code to letter (1=A, 2=B, etc.)
+        decodedWord += letter;
+    }
+    if (guess === decodedWord) {
+        stopTimer(); // Stop the timer if the guess is correct
+        document.getElementById("result").innerHTML = "You guessed it right!";
+    } else if (timeLeft === 0) {
+        document.getElementById("result").innerHTML = "Time's up! You lose!";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, wrong guess. Try again!";
+    }
+    document.getElementById("guess-input").value = ""; // Clear the guess input field
+}
+    </script>
+    <div id="result"></div>
+</body>
+
+</html>
