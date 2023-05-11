@@ -3,7 +3,7 @@
 
 <head>
     <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
-    <title>Guess the Word</title>
+    <title>Handy Hacking Guide - Decode</title>
     <style>
         body {
             background-color: #3d3d3d;
@@ -16,7 +16,20 @@
             font-weight: bold;
             margin-top: 30px;
             letter-spacing: 10px;
-            text-shadow: 2px 2px #c7c7c7;
+            text-shadow: 2px 2px #f5f5f5;
+        }
+
+        label
+        {
+            margin-top: 7px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #f5efef;
+            text-shadow:
+                -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
         }
 
         p {
@@ -43,8 +56,8 @@
             font-size: 20px;
             padding: 5px;
             margin-bottom: 10px;
-            box-shadow: 2px 2px #c7c7c7;
-            text-shadow: 1px 1px #c7c7c7;
+            box-shadow: 2px 2px #f5f5f5;
+            text-shadow: 1px 1px #f5f5f5;
             width: 200px;
         }
 
@@ -53,7 +66,7 @@
         }
 
         button {
-            background-color: #c7c7c7;
+            background-color: #f5f5f5;
             color: #2f2f2f;
             border: none;
             padding: 10px;
@@ -61,15 +74,15 @@
             font-weight: bold;
             margin-top: 10px;
             margin-bottom: 10px;
-            box-shadow: 2px 2px #3d3d3d;
-            text-shadow: 1px 1px #3d3d3d;
+            box-shadow: 2px 2px #006eff;
+            text-shadow: 1px 1px #006eff;
             cursor: pointer;
             transition: background-color 0.2s;
         }
 
         button:hover {
-            background-color: #3d3d3d;
-            color: #c7c7c7;
+            background-color: #2c6ab9;
+            color: #f5f5f5;
         }
 
         #result {
@@ -89,10 +102,10 @@
 </head>
 
 <body>
+    <h1><img src="https://raw.githubusercontent.com/Pup-Noodlz/HHG/main/Images/header.png"
+        alt="HHG Handy Hacking Guide"></h1>
     <label>Enter the word:</label>
-    <input type="text" id="word-input">
-    <br><br>
-    <button onclick="encodeWord()">Encode Word</button>
+    <input type="text" id="word-input">   <button onclick="encodeWord()">Encode Word</button>
     <br><br>
     <label>Encoded Word:</label>
     <input type="text" id="encoded-word" disabled>
