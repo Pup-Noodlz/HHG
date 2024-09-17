@@ -14,6 +14,7 @@ You click on your choice and you will know if you win, lose or tie with the comp
 
 3 - How to play Decode:
 
-Input the word you wish to encode is simple ASCII. Only letters allowed. Press encode, the word will appear encoded.
+Input the word you wish to encode. Only letters allowed. Press encode, the word will appear encoded.
 A timer of 30sec will start and the player have to decode the word and input it in the guess box in time.
+The encoding is Alphabetic to numeric, a = 1 and b = 2...
 
